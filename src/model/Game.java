@@ -20,6 +20,16 @@ public class Game {
         field.showField();
 
         while (true) {
+            synchronized (GameController.key) {
+                try {
+                    GameController.key.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            System.out.println("start iteration");
+
             field.shoot(user.getShootPoint(), Field.Type.X);
             field.showField();
             if (field.whoIsWinner() == Field.Type.X) {
@@ -34,6 +44,5 @@ public class Game {
                 break;
             }
         }
-
     }
 }

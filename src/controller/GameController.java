@@ -8,10 +8,15 @@ import view.GameWindow;
 public class GameController {
     public static GameWindow window;
     public static User user;
+    public static final Object key = new Object();
 
     public static void doShoot(Point point, Field.Type type) {
         User.setPoint(point);
         User.setIsShoot(true);
+        synchronized (key) {
+            System.out.println("notify");
+            key.notifyAll();
+        }
     }
 
     public static void showResume(String s) {
