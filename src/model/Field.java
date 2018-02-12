@@ -44,6 +44,7 @@ public class Field {
 
     //    void shoot(int x, int y, Type who) {
     public void shoot(Point point, Type who) {
+        System.out.println("shoot");
         //todo DZ проверить границы
         //todo DZ проверить не ходил ли кто? Запрет на повторный ход в занятую ячейку
         if (point.getX() > SIZE || point.getY() > SIZE
